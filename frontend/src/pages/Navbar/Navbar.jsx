@@ -44,13 +44,13 @@ export default function ButtonAppBar() {
           {!isLoggined && (
             <>
               <button
-                className="bg-red-500 hover:bg-red-600 rounded-full py-2 px-4 text-white font-semibold text-lg"
+                className="bg-blue-300 hover:bg-blue-500 rounded-full py-2 px-4 text-white font-semibold text-lg"
                 onClick={handleLogin}
               >
                 Log in
               </button>
               <button
-                className="bg-slate-200 hover:bg-slate-400 rounded-full py-2 px-4 font-semibold text-lg"
+                className="bg-slate-200 hover:bg-slate-300 rounded-full py-2 px-4 font-semibold text-lg"
                 onClick={handleSignUp}
               >
                 Sign up
