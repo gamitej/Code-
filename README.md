@@ -1,6 +1,6 @@
 # Code
 
-## Frontend
+### Frontend
 
 1. Vite
 2. JavaScript
@@ -8,8 +8,8 @@
 4. MUI
 5. Lodash
 
-## Backend
+### Backend
 
 1. Flask
 2. Python
-3. sqlite
+3. Sqlite
