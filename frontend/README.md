@@ -1,4 +1,4 @@
-# Pinterest
+# Code
 
 1. Vite
 2. JavaScript
