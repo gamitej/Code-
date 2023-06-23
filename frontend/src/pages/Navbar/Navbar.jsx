@@ -28,13 +28,13 @@ export default function ButtonAppBar() {
   // =========== USE-EFFECT ===============
 
   useEffect(() => {
-    setOpen(false);
+    if (!isLoggined) {
+      setOpen(true);
+      setName("login");
+    } else {
+      setOpen(false);
+    }
   }, [isLoggined]);
-
-  useEffect(() => {
-    setOpen(true);
-    setName("login");
-  }, []);
 
   return (
     <React.Fragment>
