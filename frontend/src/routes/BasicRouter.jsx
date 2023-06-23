@@ -6,6 +6,8 @@ import ProtectedRoute from "../pages/Login/ProtectedRoutes";
 // lazy
 const Home = lazy(() => import("../pages/Home/Home"));
 const Login = lazy(() => import("../pages/Login/Login"));
+const Overview = lazy(() => import("../pages/Overview/Overview"));
+
 const PageNotFound = lazy(() => import("../pages/PageNotFound/PageNotFound"));
 
 const BasicRouter = () => {
@@ -15,6 +17,7 @@ const BasicRouter = () => {
     <Routes>
       <Route path="/" element={<ProtectedRoute isAuth={isLoggined} />}>
         <Route path="/" element={<Home />} />
+        <Route path="/explore/:name" element={<Overview />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
       <Route path="/auth" element={<Login />} />

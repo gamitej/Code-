@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 // libs
 import moment from "moment";
 // mui
@@ -61,18 +62,19 @@ const Home = () => {
         <div className="flex justify-center items-center">
           <div className="grid  grid-cols-1  md:grid-cols-4 lg:grid-cols-6  gap-10 w-[80%] ">
             {arr?.map(({ label, total, solved, per }, index) => (
-              <div
+              <NavLink
+                to={`/explore/${label.toLowerCase()}`}
                 className="h-[20rem] col-span-2 rounded-lg shadow-xl  bg-white p-2 hover:shadow-red-200 transform transition-all hover:scale-105 cursor-pointer"
                 key={index}
               >
                 <div className="relative w-full h-[75%] ">
-                  <p className="absolute top-2 right-2 text-white font-semibold text-2xl">
+                  <p className="absolute top-2 left-2 text-white font-semibold text-2xl">
                     {label}
                   </p>
                   <img
                     src={logo}
                     srcSet={logo}
-                    alt=""
+                    alt="image"
                     className="h-full w-full"
                     loading="lazy"
                   />
@@ -91,7 +93,7 @@ const Home = () => {
                     />
                   )}
                 </div>
-              </div>
+              </NavLink>
             ))}
           </div>
         </div>
