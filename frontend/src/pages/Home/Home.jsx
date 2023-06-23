@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
-import logo from "../../assests/bg.jpg";
-import { Box, CircularProgress, Typography } from "@mui/material";
+// libs
 import moment from "moment";
+// mui
+import CheckIcon from "@mui/icons-material/Check";
+import { Box, CircularProgress, Fab, Typography } from "@mui/material";
+// services
 import { getAllPins } from "../../services/ApiServices/Home/homeService";
+// images
+import logo from "../../assests/bg.jpg";
 
 const arr = [
-  { label: "Arrays", total: 32, solved: 2, per: 1 },
-  { label: "Strings", total: 22, solved: 5, per: 1 },
+  { label: "Arrays", total: 32, solved: 32, per: 1 },
+  { label: "Strings", total: 22, solved: 21, per: 1 },
 ];
 
 const Home = () => {
-  // ========= STATES =============
+  // ========= USE-STATES =============
 
   const [show, setShow] = useState({ hide: false, id: "" });
   const [data, setData] = useState([]);
@@ -54,21 +59,37 @@ const Home = () => {
       )}
       {!loading && (
         <div className="flex justify-center items-center">
-          <div className="grid  grid-cols-1 lg:grid-cols-6  md:grid-cols-4 gap-10 w-[80%] ">
+          <div className="grid  grid-cols-1  md:grid-cols-4 lg:grid-cols-6  gap-10 w-[80%] ">
             {arr?.map(({ label, total, solved, per }, index) => (
               <div
-                className="col-span-2 rounded-lg shadow-xl  bg-white p-2 hover:shadow-red-200 transform transition-all hover:scale-105 cursor-pointer"
+                className="h-[20rem] col-span-2 rounded-lg shadow-xl  bg-white p-2 hover:shadow-red-200 transform transition-all hover:scale-105 cursor-pointer"
                 key={index}
               >
-                <div className="w-[100%] h-[75%]">
-                  <img src={logo} alt="" className="h-[100%] w-[100%]" />
+                <div className="relative w-full h-[75%] ">
+                  <p className="absolute top-2 right-2 text-white font-semibold text-2xl">
+                    {label}
+                  </p>
+                  <img
+                    src={logo}
+                    srcSet={logo}
+                    alt=""
+                    className="h-full w-full"
+                    loading="lazy"
+                  />
                 </div>
                 <div className="flex justify-around items-center h-[25%]">
                   <SubPara label="solved" value={solved} />
                   <SubPara label="total" value={total} />
-                  <CircularProgressWithLabel
-                    value={Math.round((solved / total) * 100)}
-                  />
+
+                  {solved === total ? (
+                    <Fab aria-label="save" color="primary">
+                      <CheckIcon />
+                    </Fab>
+                  ) : (
+                    <CircularProgressWithLabel
+                      value={Math.round((solved / total) * 100)}
+                    />
+                  )}
                 </div>
               </div>
             ))}
@@ -91,7 +112,7 @@ function SubPara({ label, value }) {
 function CircularProgressWithLabel(props) {
   return (
     <Box sx={{ position: "relative", display: "inline-flex" }}>
-      <CircularProgress variant="determinate" {...props} />
+      <CircularProgress size={50} variant="determinate" {...props} />
       <Box
         sx={{
           top: 0,
