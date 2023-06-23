@@ -61,7 +61,7 @@ const OverviewCardHeader = ({
   );
 };
 
-// sub comps
+// sub-comps
 function MenuComp({
   open,
   anchorEl,
