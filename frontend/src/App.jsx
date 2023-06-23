@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./pages/Navbar/Navbar";
 
 import BasicRouter from "./routes/BasicRouter";
-import { CircularProgress } from "@mui/material";
+import { Backdrop, CircularProgress } from "@mui/material";
 
 function App() {
   return (
@@ -23,14 +23,12 @@ function App() {
 
 const Loading = () => {
   return (
-    <div
-      className="h-[90vh] w-full flex justify-center
-   items-center"
+    <Backdrop
+      sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+      open={true}
     >
-      <div>
-        <CircularProgress />
-      </div>
-    </div>
+      <CircularProgress color="inherit" />
+    </Backdrop>
   );
 };
 
