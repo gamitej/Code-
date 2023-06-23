@@ -75,7 +75,7 @@ const Home = () => {
                     src={logo}
                     srcSet={logo}
                     alt="image"
-                    className="h-full w-full"
+                    className="h-full w-full rounded-md"
                     loading="lazy"
                   />
                 </div>
