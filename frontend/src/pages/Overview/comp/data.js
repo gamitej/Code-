@@ -1,3 +1,24 @@
+export const stateObj = {
+  easy: {
+    unsolved: true,
+    solved: true,
+    leetcode: true,
+    codechef: true,
+  },
+  medium: {
+    unsolved: true,
+    solved: true,
+    leetcode: true,
+    codechef: true,
+  },
+  hard: {
+    unsolved: true,
+    solved: true,
+    leetcode: true,
+    codechef: true,
+  },
+};
+
 export const filterData = [
   { label: "Solved", name: "solved" },
   { label: "Unsolved", name: "unsolved" },
@@ -6,7 +27,7 @@ export const filterData = [
 ];
 
 export const cardData = [
-  { title: "Easy", body: [] },
-  { title: "Medium", body: [] },
-  { title: "Hard", body: [] },
+  { title: "Easy", value: "easy", body: [] },
+  { title: "Medium", value: "medium", body: [] },
+  { title: "Hard", value: "hard", body: [] },
 ];

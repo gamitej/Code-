@@ -8,10 +8,15 @@ import {
   Tooltip,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
-// utils
+// data
 import { filterData } from "./data";
 
-const OverviewCardHeader = ({ title, filters = {}, setFilters = () => {} }) => {
+const OverviewCardHeader = ({
+  cardType,
+  cardTitle,
+  filters = {},
+  setFilters = () => {},
+}) => {
   // ============= USE-STATE ====================
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -25,12 +30,19 @@ const OverviewCardHeader = ({ title, filters = {}, setFilters = () => {} }) => {
   };
   const handleFilterChange = (e) => {
     const name = e.target.name;
-    setFilters((prevState) => ({ ...prevState, [name]: !prevState[name] }));
+    const cardTypeName = filters[cardType];
+    setFilters({
+      ...filters,
+      [cardType]: {
+        ...filters[cardType],
+        [name]: !cardTypeName[name],
+      },
+    });
   };
 
   return (
     <div className="flex justify-between items-center p-3">
-      <p className="text-xl  text-slate-700">{title}</p>
+      <p className="text-xl  text-slate-700">{cardTitle}</p>
       <Tooltip title="filters" placement="top" onClick={handleClick} arrow>
         <FilterListIcon
           className="text-slate-500 cursor-pointer"
@@ -39,6 +51,7 @@ const OverviewCardHeader = ({ title, filters = {}, setFilters = () => {} }) => {
       </Tooltip>
       <MenuComp
         open={open}
+        cardType={cardType}
         anchorEl={anchorEl}
         filters={filters}
         handleClose={handleClose}
@@ -53,6 +66,7 @@ function MenuComp({
   open,
   anchorEl,
   filters = {},
+  cardType = "",
   handleClose = () => {},
   handleFilterChange = () => {},
 }) {
@@ -74,7 +88,7 @@ function MenuComp({
               control={
                 <Switch
                   size="small"
-                  checked={filters[name]}
+                  checked={filters[cardType][name]}
                   onChange={handleFilterChange}
                   name={name}
                 />

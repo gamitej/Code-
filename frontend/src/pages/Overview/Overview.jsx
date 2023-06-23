@@ -4,17 +4,13 @@ import { NavLink, useParams } from "react-router-dom";
 import { Button, Divider } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import OverviewCardHeader from "./comp/OverviewCardHeader";
-import { cardData } from "./comp/data";
+// data
+import { cardData, stateObj } from "./comp/data";
 
 const Overview = () => {
   const { name } = useParams();
   // ============= USE-STATE ====================
-  const [filters, setFilters] = useState({
-    unsolved: true,
-    solved: true,
-    leetcode: true,
-    codechef: true,
-  });
+  const [filters, setFilters] = useState(stateObj || {});
 
   // ============= EVENT-HANDLERS ====================
 
@@ -26,14 +22,15 @@ const Overview = () => {
       </div>
       <div className="w-[95%] mt-10 m-auto grid grid-cols-3 lg:grid-cols-9 md:grid-cols-6 gap-4">
         {/* Card */}
-        {cardData?.map(({ title }, index) => (
+        {cardData?.map(({ title, value }, index) => (
           <div
             key={index}
             className="col-span-3 shadow-md rounded-xl min-w-[20rem] h-[20rem] bg-white"
           >
             {/* Card Header */}
             <OverviewCardHeader
-              title={title}
+              cardType={value}
+              cardTitle={title}
               filters={filters}
               setFilters={setFilters}
             />
