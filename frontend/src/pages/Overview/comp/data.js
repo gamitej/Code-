@@ -26,8 +26,18 @@ export const filterData = [
   { label: "CodeChef", name: "codechef" },
 ];
 
+const cardBodyData = [
+  { name: "name", solved: false, platform: "leetcode", url: "" },
+  { name: "name", solved: false, platform: "codechef", url: "" },
+  { name: "name", solved: false, platform: "codeforces", url: "" },
+  { name: "name", solved: false, platform: "leetcode", url: "" },
+  { name: "name", solved: false, platform: "leetcode", url: "" },
+  { name: "name", solved: false, platform: "leetcode", url: "" },
+  { name: "name", solved: false, platform: "leetcode", url: "" },
+];
+
 export const cardData = [
-  { title: "Easy", value: "easy", body: [] },
+  { title: "Easy", value: "easy", body: cardBodyData },
   { title: "Medium", value: "medium", body: [] },
   { title: "Hard", value: "hard", body: [] },
 ];

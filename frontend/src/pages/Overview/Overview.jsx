@@ -6,6 +6,7 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import OverviewCardHeader from "./comp/OverviewCardHeader";
 // data
 import { cardData, stateObj, cardColor } from "./comp/data";
+import OverviewCardBody from "./comp/OverviewCardBody";
 
 const Overview = () => {
   const { name } = useParams();
@@ -22,7 +23,7 @@ const Overview = () => {
       </div>
       <div className="w-[95%] mt-10 m-auto grid grid-cols-3 lg:grid-cols-9 md:grid-cols-6 gap-4">
         {/* Card */}
-        {cardData?.map(({ title, value }, index) => (
+        {cardData?.map(({ title, value, body }, index) => (
           <div
             key={index}
             className="col-span-3 shadow-md rounded-xl min-w-[20rem] h-[20rem] bg-white"
@@ -37,7 +38,7 @@ const Overview = () => {
             />
             <Divider />
             {/* Card Body */}
-            <div></div>
+            <OverviewCardBody cardBodyData={body} />
           </div>
         ))}
       </div>
