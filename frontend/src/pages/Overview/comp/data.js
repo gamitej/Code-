@@ -31,3 +31,9 @@ export const cardData = [
   { title: "Medium", value: "medium", body: [] },
   { title: "Hard", value: "hard", body: [] },
 ];
+
+export const cardColor = {
+  easy: "#08B2A4",
+  medium: "#FFE452",
+  hard: "#FF3D5A",
+};

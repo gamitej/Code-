@@ -5,7 +5,7 @@ import { Button, Divider } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import OverviewCardHeader from "./comp/OverviewCardHeader";
 // data
-import { cardData, stateObj } from "./comp/data";
+import { cardData, stateObj, cardColor } from "./comp/data";
 
 const Overview = () => {
   const { name } = useParams();
@@ -33,6 +33,7 @@ const Overview = () => {
               cardTitle={title}
               filters={filters}
               setFilters={setFilters}
+              color={cardColor[value]}
             />
             <Divider />
             {/* Card Body */}

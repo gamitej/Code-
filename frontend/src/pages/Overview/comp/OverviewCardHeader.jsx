@@ -12,6 +12,7 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 import { filterData } from "./data";
 
 const OverviewCardHeader = ({
+  color,
   cardType,
   cardTitle,
   filters = {},
@@ -41,11 +42,14 @@ const OverviewCardHeader = ({
   };
 
   return (
-    <div className="flex justify-between items-center p-3">
-      <p className="text-xl  text-slate-700">{cardTitle}</p>
-      <Tooltip title="filters" placement="top" onClick={handleClick} arrow>
+    <div
+      className="flex justify-between items-center p-3 rounded-tr-xl rounded-tl-xl select-none"
+      style={{ backgroundColor: color }}
+    >
+      <p className="text-xl text-slate-700">{cardTitle}</p>
+      <Tooltip title="Filters" placement="top" onClick={handleClick} arrow>
         <FilterListIcon
-          className="text-slate-500 cursor-pointer"
+          className="text-slate-500 cursor-pointer hover:text-slate-200"
           sx={{ fontSize: "2rem" }}
         />
       </Tooltip>
