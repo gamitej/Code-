@@ -11,7 +11,7 @@ import FilterListIcon from "@mui/icons-material/FilterList";
 // utils
 import { filterData } from "./data";
 
-const OverviewCardHeader = ({ filters = {}, setFilters = () => {} }) => {
+const OverviewCardHeader = ({ title, filters = {}, setFilters = () => {} }) => {
   // ============= USE-STATE ====================
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -30,7 +30,7 @@ const OverviewCardHeader = ({ filters = {}, setFilters = () => {} }) => {
 
   return (
     <div className="flex justify-between items-center p-3">
-      <p className="text-xl  text-slate-700">Title</p>
+      <p className="text-xl  text-slate-700">{title}</p>
       <Tooltip title="filters" placement="top" onClick={handleClick} arrow>
         <FilterListIcon
           className="text-slate-500 cursor-pointer"
@@ -67,7 +67,7 @@ function MenuComp({
           "aria-labelledby": "basic-button",
         }}
       >
-        <FormGroup sx={{ marginLeft: "12px" }}>
+        <FormGroup sx={{ marginLeft: "12px", userSelect: "none" }}>
           {filterData?.map(({ name, label }, index) => (
             <FormControlLabel
               key={index}

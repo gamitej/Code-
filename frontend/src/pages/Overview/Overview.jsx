@@ -4,14 +4,16 @@ import { NavLink, useParams } from "react-router-dom";
 import { Button, Divider } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import OverviewCardHeader from "./comp/OverviewCardHeader";
+import { cardData } from "./comp/data";
 
 const Overview = () => {
   const { name } = useParams();
   // ============= USE-STATE ====================
   const [filters, setFilters] = useState({
-    sorted: false,
     unsolved: true,
     solved: true,
+    leetcode: true,
+    codechef: true,
   });
 
   // ============= EVENT-HANDLERS ====================
@@ -22,15 +24,24 @@ const Overview = () => {
         <h2 className="text-4xl font-semibold text-white capitalize">{name}</h2>
         <BackButton />
       </div>
-      <div className="w-[90%] mt-10 m-auto">
+      <div className="w-[95%] mt-10 m-auto grid grid-cols-3 lg:grid-cols-9 md:grid-cols-6 gap-4">
         {/* Card */}
-        <div className="shadow-md rounded-xl w-[35rem] h-[20rem] bg-white">
-          {/* Card Header */}
-          <OverviewCardHeader filters={filters} setFilters={setFilters} />
-          <Divider />
-          {/* Card Body */}
-          <div></div>
-        </div>
+        {cardData?.map(({ title }, index) => (
+          <div
+            key={index}
+            className="col-span-3 shadow-md rounded-xl min-w-[20rem] h-[20rem] bg-white"
+          >
+            {/* Card Header */}
+            <OverviewCardHeader
+              title={title}
+              filters={filters}
+              setFilters={setFilters}
+            />
+            <Divider />
+            {/* Card Body */}
+            <div></div>
+          </div>
+        ))}
       </div>
     </div>
   );
