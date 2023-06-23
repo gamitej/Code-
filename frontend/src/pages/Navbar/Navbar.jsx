@@ -31,6 +31,11 @@ export default function ButtonAppBar() {
     setOpen(false);
   }, [isLoggined]);
 
+  useEffect(() => {
+    setOpen(true);
+    setName("login");
+  }, []);
+
   return (
     <React.Fragment>
       <div className="w-full flex justify-between items-center h-[5rem] shadow-md">

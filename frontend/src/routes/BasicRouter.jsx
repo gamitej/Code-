@@ -17,8 +17,8 @@ const BasicRouter = () => {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<PageNotFound />} />
       </Route>
-      <Route path="/login" element={<Login />} />
-      <Route path="*" element={<Navigate to="/login" />} />
+      <Route path="/auth" element={<Login />} />
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   );
 };
