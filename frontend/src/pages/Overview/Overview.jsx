@@ -10,32 +10,38 @@ const Overview = () => {
     <div>
       <div className="relative bg-blue-300 flex justify-center items-center h-[10rem]">
         <h2 className="text-4xl font-semibold text-white capitalize">{name}</h2>
-        <NavLink
-          to="/"
-          className="absolute top-2 left-4 hover:scale-105 cursor-pointer"
-        >
-          <Button
-            sx={{
-              fontSize: "1rem",
-              color: "whitesmoke",
-              textTransform: "lowercase",
-            }}
-            startIcon={
-              <KeyboardBackspaceIcon
-                sx={{
-                  width: "1.5rem",
-                  height: "1.5rem",
-                  color: "whitesmoke",
-                }}
-              />
-            }
-          >
-            Back to explore
-          </Button>
-        </NavLink>
+        <BackButton />
       </div>
     </div>
   );
 };
+
+function BackButton() {
+  return (
+    <NavLink
+      to="/"
+      className="absolute top-2 left-4 hover:scale-105 cursor-pointer"
+    >
+      <Button
+        sx={{
+          fontSize: "1rem",
+          color: "whitesmoke",
+          textTransform: "lowercase",
+        }}
+        startIcon={
+          <KeyboardBackspaceIcon
+            sx={{
+              width: "1.5rem",
+              height: "1.5rem",
+              color: "whitesmoke",
+            }}
+          />
+        }
+      >
+        Back to explore
+      </Button>
+    </NavLink>
+  );
+}
 
 export default Overview;

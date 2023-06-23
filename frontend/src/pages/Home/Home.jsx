@@ -13,6 +13,7 @@ import logo from "../../assests/bg.jpg";
 const arr = [
   { label: "Arrays", total: 32, solved: 32, per: 1 },
   { label: "Strings", total: 22, solved: 21, per: 1 },
+  { label: "Two Pointers", total: 16, solved: 3, per: 1 },
 ];
 
 const Home = () => {
