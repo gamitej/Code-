@@ -1,33 +1,20 @@
 import React, { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 // mui
-import {
-  Button,
-  Divider,
-  FormControlLabel,
-  FormGroup,
-  Menu,
-  MenuItem,
-  Switch,
-  Tooltip,
-} from "@mui/material";
-import FilterListIcon from "@mui/icons-material/FilterList";
+import { Button, Divider } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
-import { filterData } from "./data";
+import OverviewCardHeader from "./comp/OverviewCardHeader";
 
 const Overview = () => {
   const { name } = useParams();
   // ============= USE-STATE ====================
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const [filters, setFilters] = useState({
+    sorted: false,
+    unsolved: true,
+    solved: true,
+  });
 
   // ============= EVENT-HANDLERS ====================
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <div className="bg-slate-100 h-[calc(100vh-5rem)]">
@@ -39,25 +26,7 @@ const Overview = () => {
         {/* Card */}
         <div className="shadow-md rounded-xl w-[35rem] h-[20rem] bg-white">
           {/* Card Header */}
-          <div className="flex justify-between items-center p-3">
-            <p className="text-xl  text-slate-700">Title</p>
-            <Tooltip
-              title="filters"
-              placement="top"
-              onClick={handleClick}
-              arrow
-            >
-              <FilterListIcon
-                className="text-slate-500 cursor-pointer"
-                sx={{ fontSize: "2rem" }}
-              />
-            </Tooltip>
-            <MenuComp
-              handleClose={handleClose}
-              open={open}
-              anchorEl={anchorEl}
-            />
-          </div>
+          <OverviewCardHeader filters={filters} setFilters={setFilters} />
           <Divider />
           {/* Card Body */}
           <div></div>
@@ -67,46 +36,6 @@ const Overview = () => {
   );
 };
 
-function MenuComp({
-  open,
-  anchorEl,
-  filter = {},
-  handleClose = () => {},
-  handleFilterChange = () => {},
-}) {
-  return (
-    <React.Fragment>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
-      >
-        <FormGroup sx={{ marginLeft: "12px" }}>
-          {filterData?.map(({ name, label }, index) => (
-            <FormControlLabel
-              key={index}
-              control={
-                <Switch
-                  size="small"
-                  checked={filter.sort}
-                  onChange={handleFilterChange}
-                  name={name}
-                />
-              }
-              label={label}
-            />
-          ))}
-        </FormGroup>
-      </Menu>
-    </React.Fragment>
-  );
-}
-
-// sub comp
 function BackButton() {
   return (
     <NavLink
