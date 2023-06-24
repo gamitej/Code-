@@ -2,6 +2,7 @@ import React from "react";
 import { useLogin } from "../../store/login/useLogin";
 import { IconButton, Menu, MenuItem } from "@mui/material";
 import { AccountCircle } from "@mui/icons-material";
+import { NavLink } from "react-router-dom";
 
 const ProfileMenu = () => {
   const { isLoggined, setLogout } = useLogin();
@@ -38,19 +39,13 @@ const ProfileMenu = () => {
           <Menu
             id="menu-appbar"
             anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
             keepMounted
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem>{getUsername()}</MenuItem>
+            <NavLink to="/profile" onClick={() => setAnchorEl(null)}>
+              <MenuItem>{getUsername()}</MenuItem>
+            </NavLink>
             <MenuItem onClick={setLogout}>Logout</MenuItem>
           </Menu>
         </div>
