@@ -66,4 +66,4 @@ const OverviewCardBody = ({
   );
 };
 
-export default OverviewCardBody;
+export default React.memo(OverviewCardBody);
