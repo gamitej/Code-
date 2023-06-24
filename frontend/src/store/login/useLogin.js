@@ -1,7 +1,6 @@
-import { postLogin } from "../../services/ApiServices/Login/loginService";
-import { postSignup } from "../../services/ApiServices/Signup/signupService";
 import { create } from "zustand";
 import { getUser, removeUser, setUser } from "./events";
+import { postLogin, postSignup } from "../../services";
 
 export const useLogin = create((set) => ({
   user: "",

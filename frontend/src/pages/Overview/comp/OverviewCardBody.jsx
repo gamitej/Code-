@@ -1,6 +1,7 @@
 import React from "react";
-import TaskAltIcon from "@mui/icons-material/TaskAlt";
+// mui
 import { Divider } from "@mui/material";
+import TaskAltIcon from "@mui/icons-material/TaskAlt";
 
 const OverviewCardBody = ({ cardBodyData }) => {
   return (
