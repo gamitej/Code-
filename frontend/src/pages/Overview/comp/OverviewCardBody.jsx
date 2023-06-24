@@ -36,6 +36,10 @@ const OverviewCardBody = ({
     });
   };
 
+  const getColor = (solved) => {
+    return solved ? colorCode["done"] : colorCode["skip"];
+  };
+
   return (
     <div id="hideScrollBar" className="overflow-auto h-[calc(22rem-4rem)]">
       {cardBodyData?.map(({ name, url, platform, solved, id }) => (
@@ -45,10 +49,15 @@ const OverviewCardBody = ({
               onClick={() => handleMark(id, solved)}
               className="col-span-1 hover:text-slate-400"
               style={{
-                color: solved ? colorCode["done"] : colorCode["skip"],
+                color: getColor(solved),
               }}
             />
-            <p className="col-span-6 text-slate-600">
+            <p
+              className="col-span-6 text-slate-600"
+              style={{
+                color: getColor(solved),
+              }}
+            >
               <Link
                 to={url}
                 target="_blank"
@@ -57,7 +66,14 @@ const OverviewCardBody = ({
                 {name}
               </Link>
             </p>
-            <p className="col-span-1 text-slate-400">{platform}</p>
+            <p
+              className="col-span-1 text-slate-400"
+              style={{
+                color: getColor(solved),
+              }}
+            >
+              {platform}
+            </p>
           </div>
           <Divider />
         </React.Fragment>

@@ -44,7 +44,7 @@ const Profile = () => {
   return (
     <div className="w-full h-full m-auto">
       <div className="relative h-[5rem] flex justify-center items-center">
-        <h1 className="text-3xl font-semibold text-purple-300 underline">
+        <h1 className="text-3xl font-semibold text-purple-400 underline">
           Amitej Pratap Singh
         </h1>
         <BackButton className="absolute top-4 left-4" color="black" />
@@ -83,7 +83,7 @@ function AdminModal({
       handleOpen={handleOpen}
     >
       <div className="p-4 flex flex-col justify-center items-center w-full h-full">
-        <p className="text-purple-300 font-semibold text-2xl underline select-none mb-8">
+        <p className="text-purple-500 font-semibold text-2xl underline select-none mb-8">
           Add Questions
         </p>
         <form
