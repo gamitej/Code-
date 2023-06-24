@@ -1,6 +1,6 @@
 import React from "react";
 // mui
-import { Divider, Tooltip } from "@mui/material";
+import { Divider } from "@mui/material";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 // utils
 import colorCode from "../../../utils/colorCode.json";
@@ -29,26 +29,19 @@ const OverviewCardBody = ({
       return updatedCards;
     });
   };
-  console.log(cardData);
 
   return (
     <div id="hideScrollBar" className="overflow-auto h-[calc(20rem-4rem)]">
       {cardBodyData?.map(({ name, url, platform, completed, id }) => (
         <React.Fragment key={id}>
           <div className="grid grid-cols-8 p-4 hover:bg-slate-100 cursor-pointer">
-            <Tooltip
-              title={!completed ? "mark it as done" : "done"}
-              placement="top"
-              arrow
-            >
-              <TaskAltIcon
-                onClick={() => handleMark(id, completed)}
-                className="col-span-1 hover:text-slate-400"
-                style={{
-                  color: completed ? colorCode["done"] : colorCode["skip"],
-                }}
-              />
-            </Tooltip>
+            <TaskAltIcon
+              onClick={() => handleMark(id, completed)}
+              className="col-span-1 hover:text-slate-400"
+              style={{
+                color: completed ? colorCode["done"] : colorCode["skip"],
+              }}
+            />
             <p className="col-span-6 text-slate-600">
               <Link
                 to={url}
