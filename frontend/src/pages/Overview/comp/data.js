@@ -27,16 +27,51 @@ export const filterData = [
 ];
 
 const cardBodyData = [
-  { name: "name", solved: false, platform: "leetcode", url: "" },
-  { name: "name", solved: false, platform: "codechef", url: "" },
-  { name: "name", solved: false, platform: "codeforces", url: "" },
-  { name: "name", solved: false, platform: "leetcode", url: "" },
-  { name: "name", solved: false, platform: "leetcode", url: "" },
-  { name: "name", solved: false, platform: "leetcode", url: "" },
-  { name: "name", solved: false, platform: "leetcode", url: "" },
+  {
+    name: "name",
+    solved: false,
+    platform: "leetcode",
+    url: "https://leetcode.com/problems/shuffle-the-array/",
+  },
+  {
+    name: "name",
+    solved: false,
+    platform: "codechef",
+    url: "https://leetcode.com/problems/shuffle-the-array/",
+  },
+  {
+    name: "name",
+    solved: false,
+    platform: "codeforces",
+    url: "https://leetcode.com/problems/shuffle-the-array/",
+  },
+  {
+    name: "name",
+    solved: false,
+    platform: "leetcode",
+    url: "https://leetcode.com/problems/shuffle-the-array/",
+  },
+  {
+    name: "name",
+    solved: false,
+    platform: "leetcode",
+    url: "https://leetcode.com/problems/shuffle-the-array/",
+  },
+  {
+    name: "name",
+    solved: false,
+    platform: "leetcode",
+    url: "https://leetcode.com/problems/shuffle-the-array/",
+  },
+  {
+    name: "name",
+    solved: false,
+    platform: "leetcode",
+    url: "https://leetcode.com/problems/shuffle-the-array/",
+  },
 ];
 
-export const cardData = [
+export const cardDataObj = [
   { cardTitle: "Easy", cardType: "easy", body: cardBodyData },
   { cardTitle: "Medium", cardType: "medium", body: [] },
   { cardTitle: "Hard", cardType: "hard", body: [] },

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 // data
-import { cardData, stateObj } from "./comp/data";
+import { cardDataObj, stateObj } from "./comp/data";
 // comp
 import OverviewCardBody from "./comp/OverviewCardBody";
 // mui
@@ -12,10 +12,11 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import colorCode from "../../utils/colorCode.json";
 
 const Overview = () => {
-  console.log(colorCode);
   const { name } = useParams();
   // ============= USE-STATE ====================
   const [filters, setFilters] = useState(stateObj || {});
+
+  const [cardData, setCardData] = useState(cardDataObj || {});
 
   // ============= EVENT-HANDLERS ====================
 

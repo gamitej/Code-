@@ -4,6 +4,7 @@ import { Divider, Tooltip } from "@mui/material";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 // utils
 import colorCode from "../../../utils/colorCode.json";
+import { Link } from "react-router-dom";
 
 const OverviewCardBody = ({ cardBodyData }) => {
   return (
@@ -14,10 +15,20 @@ const OverviewCardBody = ({ cardBodyData }) => {
             <Tooltip title="mark it as done" placement="top" arrow>
               <TaskAltIcon
                 className="col-span-1 hover:text-slate-400"
-                style={{ color: colorCode["done"] }}
+                style={{
+                  color: solved ? colorCode["done"] : colorCode["skip"],
+                }}
               />
             </Tooltip>
-            <p className="col-span-6">{name}</p>
+            <p className="col-span-6">
+              <Link
+                to={url}
+                target="_blank"
+                className="hover:underline hover:text-blue-400"
+              >
+                {name}
+              </Link>
+            </p>
             <p className="col-span-1">{platform}</p>
           </div>
           <Divider />
