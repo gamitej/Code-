@@ -45,7 +45,6 @@ const Overview = () => {
             {/* Card Body */}
             <OverviewCardBody
               cardType={cardType}
-              cardData={cardData}
               cardBodyData={body}
               setCardData={setCardData}
             />

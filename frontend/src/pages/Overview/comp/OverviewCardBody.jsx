@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 
 const OverviewCardBody = ({
   cardType,
-  cardData = {},
   cardBodyData = [],
   setCardData = () => {},
 }) => {
