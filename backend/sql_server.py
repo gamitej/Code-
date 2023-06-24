@@ -8,7 +8,6 @@ cursor = connection.cursor()
 create_user_table = '''
         CREATE TABLE IF NOT EXISTS users (
             id text,
-            name VARCHAR(25) NOT NULL,
             username text,
             password VARCHAR(25) NOT NULL,
             PRIMARY KEY (id)
@@ -34,10 +33,10 @@ cursor.execute(create_que_table)
 # =========== INSERT MANY ROWS ================
 
 user_data = [
-    ("1", "Amitej Pratap Singh", "Amitej", "1234"),
+    ("1", "Amitej", "1234"),
 ]
 
-insert_query = "INSERT OR IGNORE INTO users VALUES(?,?,?,?)"
+insert_query = "INSERT OR IGNORE INTO users VALUES(?,?,?)"
 
 cursor.executemany(insert_query, user_data)
 

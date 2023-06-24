@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask import Blueprint
+from auth_db import getUsers
 
 auth = Blueprint('auth', __name__)
 
@@ -23,7 +24,9 @@ def login():
 def singup():
     try:
         req = request.get_json()
-        name, username, passwd = req["name"], req["username"], req["password"]
+        name, username, passwd = req["username"], req["password"]
+        res = getUsers()
+        print(res)
         if username != "Amitej":
             return jsonify({"msg": "Username already exists"}), 400
         return jsonify({"msg": "success"}), 200
