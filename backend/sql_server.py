@@ -25,7 +25,7 @@ create_que_table = '''
             question text,
             url VARCHAR(25) NOT NULL,
             level VARCHAR(25) NOT NULL,
-            platformat VARCHAR(25) NOT NULL,
+            platform VARCHAR(25) NOT NULL,
             PRIMARY KEY (topicId)
         )
         '''
@@ -37,7 +37,7 @@ user_data = [
     ("1", "Amitej Pratap Singh", "Amitej", "1234"),
 ]
 
-insert_query = "INSERT OR IGNORE INTO remarks VALUES(?,?,?,?)"
+insert_query = "INSERT OR IGNORE INTO users VALUES(?,?,?,?)"
 
 cursor.executemany(insert_query, user_data)
 

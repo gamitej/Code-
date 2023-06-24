@@ -1,23 +1,22 @@
-from flask import Flask,request,jsonify
+from flask import Flask, request, jsonify
 from flask import Blueprint
-from remark.rem import getRemarks, postRemark, delRemark, updateRemark
+from remark.rem import addQuestions, addQuestionToTable, delRemark, updateRemark
 
 crud = Blueprint('crud', __name__)
 
-@crud.route('/remarks', methods=["GET", "POST"])
-def getPostRemark():
-    try:
-        if request.method == "GET":
-            res = getRemarks()
-            return jsonify({"data": res}), 200
-        if request.method == "POST":
-            req = request.get_json()
-            study, remarkText, day = req["study"], req["remark"], req["day"]
-            res = postRemark(study, remarkText, day)
-            if res:
-                return jsonify({"message": res}), 500
-            return jsonify({"message": "Remark Added Successfully"}), 200
 
+@crud.route('/add-questions', methods=["POST"])
+def addQuestions():
+    try:
+        req = request.get_json()
+        # -- req body
+        url, level, question, topic, platform = req["url"], req[
+            "level"], req["question"], req["topic"], req["platform"]
+        res = addQuestionToTable(
+            topic, question, url, level, platform)
+        if res:
+            return jsonify({"message": res}), 500
+        return jsonify({"message": "Remark Added Successfully"}), 200
     except Exception as e:
         print(e)
         return jsonify({"data": 'Error Occured'}), 500

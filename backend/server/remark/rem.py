@@ -1,10 +1,9 @@
 import uuid
 from db import selectFromTable, insertIntoTable, deleteRowFromTable, updateTable
 
+key = ["topicId", "topic", "question", "url", "level", "platform"]
 
-key = ["id", "study", "remark", "day"]
-
-table_name = "remarks"
+table_name = "questions"
 
 
 def getRemarks():
@@ -20,9 +19,10 @@ def getRemarks():
     return lis
 
 
-def postRemark(study, remark, day):
-    id = uuid.uuid1().hex
-    res = insertIntoTable(table_name, "(?,?,?,?)", (id, study, remark, day))
+def addQuestionToTable(topic, question, url, level, platform):
+    topicId = uuid.uuid1().hex
+    res = insertIntoTable(table_name, "(?,?,?,?,?,?)",
+                          (topicId, topic, question, url, level, platform))
     return res
 
 
