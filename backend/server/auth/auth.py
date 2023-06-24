@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask import Blueprint
-from auth.auth_db import getUsers
+from auth.auth_db import getUsers, insertUser, checkUserValidity
 
 auth = Blueprint('auth', __name__)
 
@@ -10,10 +10,10 @@ def login():
     try:
         req = request.get_json()
         userId, passwd = req["username"], req["password"]
-        if userId != "Amitej":
-            return jsonify({"msg": "Username not found"}), 400
-        if passwd != "1234":
-            return jsonify({"msg": "Password Incorrect"}), 400
+        # === check if user & passwd match
+        res = checkUserValidity(userId, passwd)
+        if res == False:
+            return jsonify({"msg": "Username/Password is incorrect"}), 400
         return jsonify({"msg": "success"}), 200
     except Exception as e:
         print(e)
@@ -24,12 +24,14 @@ def login():
 def singup():
     try:
         req = request.get_json()
-        name, username, passwd = req["username"], req["password"]
-        res = getUsers()
-        print(res)
-        if username != "Amitej":
+        username, passwd = req["username"], req["password"]
+        # === check if user
+        res = getUsers(username)
+        if res:
             return jsonify({"msg": "Username already exists"}), 400
-        return jsonify({"msg": "success"}), 200
+        else:
+            res = insertUser(username, passwd)
+            return jsonify({"msg": "success"}), 200
     except Exception as e:
         print(e)
         return jsonify({"msg": "Something went wrong"}), 500

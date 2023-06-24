@@ -10,7 +10,7 @@ export async function postLogin(req) {
     return data;
   } catch (error) {
     console.log(error, error.message);
-    toast.error(error.message, { autoClose: 1000 });
+    // toast.error(error.message, { autoClose: 1000 });
   }
 }
 
@@ -20,6 +20,6 @@ export async function postSignup(req) {
     return data;
   } catch (error) {
     console.log(error, error.message);
-    toast.error(error.message, { autoClose: 1000 });
+    // toast.error(error.message, { autoClose: 1000 });
   }
 }
