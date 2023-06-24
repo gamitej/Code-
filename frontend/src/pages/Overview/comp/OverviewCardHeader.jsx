@@ -22,7 +22,7 @@ const OverviewCardHeader = ({
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
-  // ============= EVENT-HANDLERS ====================
+  // ============= EVENT-HANDLERS ===============
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
