@@ -19,6 +19,7 @@ const Profile = () => {
     level: "",
     platform: "",
     question: "",
+    topic: "",
   });
 
   // =================== EVENT-HANDLERS ================
@@ -110,7 +111,7 @@ function AdminModal({
                 name={name}
                 key={index}
                 label={label}
-                width="14rem"
+                width="10rem"
                 options={options}
                 value={form[name]}
                 onChange={handleChange}

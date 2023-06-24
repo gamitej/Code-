@@ -80,6 +80,6 @@ const cardBodyData = [
 
 export const cardDataObj = [
   { cardTitle: "Easy", cardType: "easy", body: cardBodyData },
-  { cardTitle: "Medium", cardType: "medium", body: [] },
-  { cardTitle: "Hard", cardType: "hard", body: [] },
+  { cardTitle: "Medium", cardType: "medium", body: cardBodyData },
+  { cardTitle: "Hard", cardType: "hard", body: cardBodyData },
 ];

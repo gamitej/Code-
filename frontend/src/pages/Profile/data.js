@@ -19,6 +19,16 @@ export const dropDownData = [
     label: "Level",
     name: "level",
   },
+  {
+    options: [
+      { id: 1, label: "Arrays", value: "arrays" },
+      { id: 2, label: "Strings", value: "strings" },
+      { id: 3, label: "Two Pointers", value: "twoPointers" },
+    ],
+    id: "3",
+    label: "Topic",
+    name: "topic",
+  },
 ];
 
 export const inputData = [
