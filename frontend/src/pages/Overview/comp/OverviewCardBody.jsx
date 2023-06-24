@@ -8,31 +8,48 @@ import { Link } from "react-router-dom";
 
 const OverviewCardBody = ({
   cardType,
-  cardBodyData = {},
+  cardData = {},
+  cardBodyData = [],
   setCardData = () => {},
 }) => {
-  const handleMark = () => {
-    const val = cardBodyData[cardType];
+  // ============== EVENT-HANDLER ==================
+  const handleMark = (id, value) => {
+    setCardData((prevCards) => {
+      const updatedCards = [...prevCards];
+
+      // Find the card with cardType "cardType" and body id "id"
+      const easyCard = updatedCards.find((card) => card.cardType === cardType);
+      const bodyItem = easyCard.body.find((item) => item.id === id);
+
+      // Update the completed value to true
+      if (bodyItem) {
+        bodyItem.completed = !value;
+      }
+
+      return updatedCards;
+    });
   };
+  console.log(cardData);
+
   return (
     <div id="hideScrollBar" className="overflow-auto h-[calc(20rem-4rem)]">
-      {cardBodyData?.map(({ name, url, platform, solved }, index) => (
-        <React.Fragment key={index}>
+      {cardBodyData?.map(({ name, url, platform, completed, id }) => (
+        <React.Fragment key={id}>
           <div className="grid grid-cols-8 p-4 hover:bg-slate-100 cursor-pointer">
             <Tooltip
-              title={!solved ? "mark it as done" : "done"}
+              title={!completed ? "mark it as done" : "done"}
               placement="top"
               arrow
             >
               <TaskAltIcon
-                onClick={handleMark}
+                onClick={() => handleMark(id, completed)}
                 className="col-span-1 hover:text-slate-400"
                 style={{
-                  color: solved ? colorCode["done"] : colorCode["skip"],
+                  color: completed ? colorCode["done"] : colorCode["skip"],
                 }}
               />
             </Tooltip>
-            <p className="col-span-6">
+            <p className="col-span-6 text-slate-600">
               <Link
                 to={url}
                 target="_blank"
@@ -41,7 +58,7 @@ const OverviewCardBody = ({
                 {name}
               </Link>
             </p>
-            <p className="col-span-1">{platform}</p>
+            <p className="col-span-1 text-slate-400">{platform}</p>
           </div>
           <Divider />
         </React.Fragment>
