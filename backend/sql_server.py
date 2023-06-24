@@ -5,7 +5,7 @@ cursor = connection.cursor()
 
 # =========== CREATE USER TABLE ===============
 
-create_table = '''
+create_user_table = '''
         CREATE TABLE IF NOT EXISTS users (
             id text,
             name VARCHAR(25) NOT NULL,
@@ -14,47 +14,32 @@ create_table = '''
             PRIMARY KEY (id)
         )
         '''
-cursor.execute(create_table)
+cursor.execute(create_user_table)
 
-# =========== CREATE USER TABLE ===============
+# =========== CREATE QUESTIONS TABLE ===============
 
-create_table = '''
+create_que_table = '''
         CREATE TABLE IF NOT EXISTS questions (
             topicId text,
             topic VARCHAR(25) NOT NULL,
-            username text,
-            password VARCHAR(25) NOT NULL,
-            PRIMARY KEY (id)
+            question text,
+            url VARCHAR(25) NOT NULL,
+            level VARCHAR(25) NOT NULL,
+            platformat VARCHAR(25) NOT NULL,
+            PRIMARY KEY (topicId)
         )
         '''
-cursor.execute(create_table)
+cursor.execute(create_que_table)
 
+# =========== INSERT MANY ROWS ================
 
-create_table = '''
-        CREATE TABLE IF NOT EXISTS remarks (
-            id text,
-            study VARCHAR(25) NOT NULL,
-            remark text,
-            work VARCHAR(25) NOT NULL,
-            PRIMARY KEY (id)
-        )
-        '''
-cursor.execute(create_table)
-
-
-# ---------- INSERT MANY ROWS --------------
-
-data = [
-    ("1", "coding", "hi amitej", "monday"),
-    ("2", "coding", "hi singh", "wednesday"),
-    ("3", "frontend", "hi amisha", "monday"),
-    ("4", "coding", "hi tiwari", "friday"),
+user_data = [
+    ("1", "Amitej Pratap Singh", "Amitej", "1234"),
 ]
-
 
 insert_query = "INSERT OR IGNORE INTO remarks VALUES(?,?,?,?)"
 
-cursor.executemany(insert_query, data)
+cursor.executemany(insert_query, user_data)
 
 connection.commit()
 connection.close()
