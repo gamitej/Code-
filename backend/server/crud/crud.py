@@ -15,8 +15,8 @@ def addQuestions():
         res = addQuestionToTable(
             topic, question, url, level, platform)
         if res:
-            return jsonify({"message": res}), 500
-        return jsonify({"message": "Remark Added Successfully"}), 200
+            return jsonify({"message": res, "error": False}), 400
+        return jsonify({"message": "Question Added Successfully", "error": True}), 200
     except Exception as e:
         print(e)
         return jsonify({"data": 'Error Occured'}), 500

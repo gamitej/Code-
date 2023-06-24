@@ -19,14 +19,18 @@ const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
     setForm((prevState) => ({ ...prevState, [name]: value }));
   };
 
+  const reset = () => {
+    setForm({ username: "", password: "" });
+    setOpen(false);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (buttonLabel === "login") {
       const isLogin = await callLoginApi(form);
       if (isLogin) {
-        setForm({ username: "", password: "" });
         toast.success("login Successfull", { autoClose: 800 });
-        setOpen(false);
+        reset();
       } else {
         toast.info("Wrong username / password", { autoClose: 1200 });
       }

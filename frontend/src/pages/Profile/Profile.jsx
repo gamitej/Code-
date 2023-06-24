@@ -10,6 +10,8 @@ import {
 import { Button } from "@mui/material";
 // data
 import { dropDownData, inputData } from "./data";
+import { postQuestion } from "../../services";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   // =================== USE-STATE =====================
@@ -29,6 +31,13 @@ const Profile = () => {
   };
 
   const handleOpen = () => {
+    setForm({
+      url: "",
+      level: "",
+      platform: "",
+      question: "",
+      topic: "",
+    });
     setOpen(true);
   };
 
@@ -37,9 +46,19 @@ const Profile = () => {
     setForm((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const reset = () => {
+    setOpen(false);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(form);
+    const res = await postQuestion(form);
+    if (res.error) {
+      toast.success(res.message, { autoClose: 800 });
+      reset();
+    } else {
+      toast.info(res.message, { autoClose: 800 });
+    }
   };
 
   return (
