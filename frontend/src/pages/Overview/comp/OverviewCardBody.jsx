@@ -14,17 +14,24 @@ const OverviewCardBody = ({
   // ============== EVENT-HANDLER ==================
   const handleMark = (id, value) => {
     setCardData((prevCards) => {
-      const updatedCards = [...prevCards];
-
-      // Find the card with cardType "cardType" and body id "id"
-      const easyCard = updatedCards.find((card) => card.cardType === cardType);
-      const bodyItem = easyCard.body.find((item) => item.id === id);
-
-      // Update the solved value to true
-      if (bodyItem) {
-        bodyItem.solved = !value;
-      }
-
+      const updatedCards = prevCards.map((card) => {
+        if (card.cardType === cardType) {
+          const updatedBody = card.body.map((item) => {
+            if (item.id === id) {
+              return {
+                ...item,
+                solved: !value,
+              };
+            }
+            return item;
+          });
+          return {
+            ...card,
+            body: updatedBody,
+          };
+        }
+        return card;
+      });
       return updatedCards;
     });
   };

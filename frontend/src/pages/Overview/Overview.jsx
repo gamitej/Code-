@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 // data
 import { cardDataObj, stateObj } from "./comp/data";
@@ -20,8 +20,6 @@ const Overview = () => {
 
   // ============= EVENT-HANDLERS ====================
 
-  useMemo(() => console.log(""), [filters]);
-
   return (
     <div className="bg-slate-100 h-[calc(100vh-5rem)]">
       <div className="relative bg-blue-300 flex justify-center items-center h-[10rem]">
@@ -41,6 +39,7 @@ const Overview = () => {
               cardType={cardType}
               cardTitle={cardTitle}
               setFilters={setFilters}
+              setCardData={setCardData}
               color={colorCode[cardType]}
             />
             <Divider />

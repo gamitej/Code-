@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 // data
 import { filterData } from "./data";
 // mui
@@ -16,6 +16,7 @@ const OverviewCardHeader = ({
   cardType,
   cardTitle,
   filters = {},
+  setCardData = () => {},
   setFilters = () => {},
 }) => {
   // ============= USE-STATE ====================
@@ -40,6 +41,10 @@ const OverviewCardHeader = ({
       },
     });
   };
+
+  // useMemo(() => console.log(""), [filters]);
+
+  console.log("");
 
   return (
     <div
@@ -106,4 +111,4 @@ function MenuComp({
   );
 }
 
-export default OverviewCardHeader;
+export default React.memo(OverviewCardHeader);
