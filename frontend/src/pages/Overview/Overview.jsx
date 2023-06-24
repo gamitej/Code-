@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 // data
 import { cardDataObj, stateObj } from "./comp/data";
@@ -19,6 +19,8 @@ const Overview = () => {
   const [cardData, setCardData] = useState(cardDataObj || {});
 
   // ============= EVENT-HANDLERS ====================
+
+  useMemo(() => console.log(""), [filters]);
 
   return (
     <div className="bg-slate-100 h-[calc(100vh-5rem)]">
