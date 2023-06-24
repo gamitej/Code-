@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask import Blueprint
-from remark.rem import addQuestions, addQuestionToTable, delRemark, updateRemark
+from remark.rem import addQuestionToTable, delRemark, updateRemark
 
 crud = Blueprint('crud', __name__)
 
