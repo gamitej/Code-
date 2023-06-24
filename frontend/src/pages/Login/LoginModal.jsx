@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 // img
 import logo from "../../assests/logo-2.png";
 // comp
-import BasicModal from "../../components/Modal/BasicModal";
-import Password from "../../components/Input/Password";
-import InputTextField from "../../components/Input/InputTextField";
+import { BasicModal, InputTextField, Password } from "../../components";
+// store
 import { useLogin } from "../../store/login/useLogin";
-import { toast } from "react-toastify";
 
 const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
   // =========== STATES ===============

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
+// comp
+import OverviewCardBody from "./comp/OverviewCardBody";
 // mui
 import { Button, Divider } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import OverviewCardHeader from "./comp/OverviewCardHeader";
 // data
 import { cardData, stateObj, cardColor } from "./comp/data";
-import OverviewCardBody from "./comp/OverviewCardBody";
 
 const Overview = () => {
   const { name } = useParams();
