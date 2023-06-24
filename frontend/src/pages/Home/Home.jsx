@@ -50,7 +50,7 @@ const Home = () => {
   }
 
   return (
-    <div className="h-[calc(100vh-5rem)] bg-slate-100 p-2">
+    <div className="h-[calc(100vh-5rem)] bg-[#F7F8FA] p-2">
       <p className="text-[2rem] font-semibold text-slate-500 text-center p-2 mb-4 font-sans">
         Explore
       </p>

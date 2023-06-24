@@ -34,7 +34,7 @@ InputTextField.propTypes = {
   placeholder: PropTypes.string,
   value: PropTypes.string,
   variant: PropTypes.string,
-  width: PropTypes.string
-}
+  width: PropTypes.string,
+};
 
 export default InputTextField;
