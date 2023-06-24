@@ -35,15 +35,19 @@ const Overview = () => {
           >
             {/* Card Header */}
             <OverviewCardHeader
+              filters={filters}
               cardType={cardType}
               cardTitle={cardTitle}
-              filters={filters}
               setFilters={setFilters}
               color={colorCode[cardType]}
             />
             <Divider />
             {/* Card Body */}
-            <OverviewCardBody cardBodyData={body} />
+            <OverviewCardBody
+              cardType={cardType}
+              cardBodyData={body}
+              setCardData={setCardData}
+            />
           </div>
         ))}
       </div>

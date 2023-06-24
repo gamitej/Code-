@@ -6,14 +6,26 @@ import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import colorCode from "../../../utils/colorCode.json";
 import { Link } from "react-router-dom";
 
-const OverviewCardBody = ({ cardBodyData }) => {
+const OverviewCardBody = ({
+  cardType,
+  cardBodyData = {},
+  setCardData = () => {},
+}) => {
+  const handleMark = () => {
+    const val = cardBodyData[cardType];
+  };
   return (
     <div id="hideScrollBar" className="overflow-auto h-[calc(20rem-4rem)]">
       {cardBodyData?.map(({ name, url, platform, solved }, index) => (
         <React.Fragment key={index}>
           <div className="grid grid-cols-8 p-4 hover:bg-slate-100 cursor-pointer">
-            <Tooltip title="mark it as done" placement="top" arrow>
+            <Tooltip
+              title={!solved ? "mark it as done" : "done"}
+              placement="top"
+              arrow
+            >
               <TaskAltIcon
+                onClick={handleMark}
                 className="col-span-1 hover:text-slate-400"
                 style={{
                   color: solved ? colorCode["done"] : colorCode["skip"],

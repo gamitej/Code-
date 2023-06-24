@@ -28,42 +28,49 @@ export const filterData = [
 
 const cardBodyData = [
   {
+    id: 1,
     name: "name",
     solved: false,
     platform: "leetcode",
     url: "https://leetcode.com/problems/shuffle-the-array/",
   },
   {
+    id: 2,
     name: "name",
     solved: false,
     platform: "codechef",
     url: "https://leetcode.com/problems/shuffle-the-array/",
   },
   {
+    id: 3,
     name: "name",
     solved: false,
     platform: "codeforces",
     url: "https://leetcode.com/problems/shuffle-the-array/",
   },
   {
+    id: 4,
     name: "name",
     solved: false,
     platform: "leetcode",
     url: "https://leetcode.com/problems/shuffle-the-array/",
   },
   {
+    id: 5,
     name: "name",
     solved: false,
     platform: "leetcode",
     url: "https://leetcode.com/problems/shuffle-the-array/",
   },
   {
+    id: 6,
     name: "name",
     solved: false,
     platform: "leetcode",
     url: "https://leetcode.com/problems/shuffle-the-array/",
   },
   {
+    id: 7,
     name: "name",
     solved: false,
     platform: "leetcode",
