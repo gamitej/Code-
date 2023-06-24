@@ -2,11 +2,12 @@ import React from "react";
 import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 const Dropdown = ({
-  name = "",
   label,
   value,
+  name = "",
+  width = 120,
   options = [],
-  minWidth = 120,
+  size = "small",
   onChange = () => {},
 }) => {
   const handleChange = (e, name) => {
@@ -16,7 +17,7 @@ const Dropdown = ({
   };
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth }} size="small">
+      <FormControl sx={{ m: 1, width }} size={size}>
         <InputLabel id={name}>{label}</InputLabel>
         <Select
           labelId={name}

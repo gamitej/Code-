@@ -42,14 +42,14 @@ const Profile = () => {
   };
 
   return (
-    <div className="w-[95%] h-full m-auto">
+    <div className="w-full h-full m-auto">
       <div className="relative h-[5rem] flex justify-center items-center">
-        <h1 className="text-3xl font-semibold text-purple-300">
+        <h1 className="text-3xl font-semibold text-purple-300 underline">
           Amitej Pratap Singh
         </h1>
-        <BackButton className="absolute top-2 left-2" color="black" />
-        <div className="absolute top-2 right-2">
-          <Button variant="outlined" onClick={handleOpen}>
+        <BackButton className="absolute top-4 left-4" color="black" />
+        <div className="absolute top-4 right-4">
+          <Button variant="contained" onClick={handleOpen}>
             Admin
           </Button>
           <AdminModal
@@ -76,8 +76,8 @@ function AdminModal({
 }) {
   return (
     <BasicModal
-      height="60%"
-      width="40%"
+      height="25rem"
+      width="40rem"
       open={open}
       onClose={onClose}
       handleOpen={handleOpen}
@@ -87,32 +87,36 @@ function AdminModal({
           Add Questions
         </p>
         <form
-          className="flex flex-col justify-around items-center h-[80%] w-full"
+          className="flex flex-col justify-around items-center h-[90%] w-full"
           onSubmit={handleSubmit}
         >
           {inputData?.map(({ name, label, placeholder }, index) => (
             <InputTextField
+              size="small"
               key={index}
               name={name}
               label={label}
               value={form[name]}
               placeholder={placeholder}
               onChange={(e) => handleChange(e.target)}
-              width="80%"
+              width="85%"
             />
           ))}
-          {dropDownData?.map(({ options, id, name, label }, index) => (
-            <Dropdown
-              id={id}
-              name={name}
-              key={index}
-              label={label}
-              minWidth={150}
-              options={options}
-              value={form[name]}
-              onChange={handleChange}
-            />
-          ))}
+          <div className="w-[90%] flex justify-between items-center">
+            {dropDownData?.map(({ options, id, name, label }, index) => (
+              <Dropdown
+                size="small"
+                id={id}
+                name={name}
+                key={index}
+                label={label}
+                width="14rem"
+                options={options}
+                value={form[name]}
+                onChange={handleChange}
+              />
+            ))}
+          </div>
           <Button type="submit" variant="contained">
             Add question
           </Button>

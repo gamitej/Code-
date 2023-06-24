@@ -4,15 +4,18 @@ import { TextField } from "@mui/material";
 const InputTextField = ({
   value = "",
   width = "80%",
+  size = "medium",
   name = "username",
   label = "Username",
   variant = "outlined",
   onChange = () => {},
   placeholder = "",
+  required = true,
 }) => {
   return (
     <>
       <TextField
+        size={size}
         value={value}
         id={name}
         name={name}
@@ -21,6 +24,9 @@ const InputTextField = ({
         onChange={onChange}
         sx={{ width }}
         placeholder={placeholder}
+        required={required}
+        spellCheck={false}
+        autoComplete="off"
       />
     </>
   );
