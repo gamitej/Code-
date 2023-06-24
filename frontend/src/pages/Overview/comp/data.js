@@ -37,13 +37,7 @@ const cardBodyData = [
 ];
 
 export const cardData = [
-  { title: "Easy", value: "easy", body: cardBodyData },
-  { title: "Medium", value: "medium", body: [] },
-  { title: "Hard", value: "hard", body: [] },
+  { cardTitle: "Easy", cardType: "easy", body: cardBodyData },
+  { cardTitle: "Medium", cardType: "medium", body: [] },
+  { cardTitle: "Hard", cardType: "hard", body: [] },
 ];
-
-export const cardColor = {
-  easy: "#08B2A4",
-  medium: "#FFE452",
-  hard: "#FF3D5A",
-};

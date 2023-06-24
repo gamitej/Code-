@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
+// data
+import { cardData, stateObj } from "./comp/data";
 // comp
 import OverviewCardBody from "./comp/OverviewCardBody";
 // mui
 import { Button, Divider } from "@mui/material";
-import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import OverviewCardHeader from "./comp/OverviewCardHeader";
-// data
-import { cardData, stateObj, cardColor } from "./comp/data";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
+// utils
+import colorCode from "../../utils/colorCode.json";
 
 const Overview = () => {
+  console.log(colorCode);
   const { name } = useParams();
   // ============= USE-STATE ====================
   const [filters, setFilters] = useState(stateObj || {});
@@ -24,18 +27,18 @@ const Overview = () => {
       </div>
       <div className="w-[95%] mt-10 m-auto grid grid-cols-3 lg:grid-cols-9 md:grid-cols-6 gap-4">
         {/* Card */}
-        {cardData?.map(({ title, value, body }, index) => (
+        {cardData?.map(({ cardTitle, cardType, body }, index) => (
           <div
             key={index}
             className="col-span-3 shadow-md rounded-xl min-w-[20rem] h-[20rem] bg-white"
           >
             {/* Card Header */}
             <OverviewCardHeader
-              cardType={value}
-              cardTitle={title}
+              cardType={cardType}
+              cardTitle={cardTitle}
               filters={filters}
               setFilters={setFilters}
-              color={cardColor[value]}
+              color={colorCode[cardType]}
             />
             <Divider />
             {/* Card Body */}

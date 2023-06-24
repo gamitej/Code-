@@ -1,15 +1,15 @@
 import React, { useState } from "react";
+// data
+import { filterData } from "./data";
 // mui
 import {
-  FormControlLabel,
-  FormGroup,
   Menu,
   Switch,
   Tooltip,
+  FormGroup,
+  FormControlLabel,
 } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
-// data
-import { filterData } from "./data";
 
 const OverviewCardHeader = ({
   color,
