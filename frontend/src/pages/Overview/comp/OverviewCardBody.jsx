@@ -44,7 +44,7 @@ const OverviewCardBody = ({
     <div id="hideScrollBar" className="overflow-auto h-[calc(22rem-4rem)]">
       {cardBodyData?.map(({ name, url, platform, solved, id }) => (
         <React.Fragment key={id}>
-          <div className="grid grid-cols-8 p-4 hover:bg-slate-100 cursor-pointer w-[90%]">
+          <div className="grid grid-cols-8 p-4 hover:bg-slate-100 cursor-pointer">
             <TaskAltIcon
               onClick={() => handleMark(id, solved)}
               className="col-span-1 hover:text-slate-400"
@@ -53,7 +53,7 @@ const OverviewCardBody = ({
               }}
             />
             <p
-              className="col-span-6 text-slate-600"
+              className="col-span-5 text-slate-600"
               style={{
                 color: getColor(solved),
               }}
@@ -67,7 +67,7 @@ const OverviewCardBody = ({
               </Link>
             </p>
             <p
-              className="col-span-1 text-slate-400"
+              className="col-span-2 text-slate-400 m-auto"
               style={{
                 color: getColor(solved),
               }}
