@@ -28,9 +28,9 @@ const Home = () => {
         setLoading(true);
         const { data } = await getAllTopics();
         setTopics(data);
-        setLoading(false);
       } catch (error) {
         console.log(error);
+      } finally {
         setLoading(false);
       }
     };
@@ -38,7 +38,7 @@ const Home = () => {
   }, []);
 
   if (loading) {
-    return <FullScreenLoader open={loading} title="loading content..." />;
+    return <FullScreenLoader open={loading} title="loading content" />;
   }
 
   return (

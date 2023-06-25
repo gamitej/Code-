@@ -30,9 +30,9 @@ const Overview = () => {
         setLoading(true);
         const { data } = await getSelectedTopicData();
         setCardData(data);
-        setLoading(false);
       } catch (error) {
         console.log(error);
+      } finally {
         setLoading(false);
       }
     };
@@ -40,7 +40,7 @@ const Overview = () => {
   }, []);
 
   if (loading) {
-    return <FullScreenLoader open={loading} title="loading questions..." />;
+    return <FullScreenLoader open={loading} title="loading questions" />;
   }
 
   return (
