@@ -1,0 +1,8 @@
+{
+  "topicsData": [
+    { "title": "Arrays", "total": 32, "solved": 32, "per": 1 },
+    { "title": "Strings", "total": 22, "solved": 21, "per": 1 },
+    { "title": "Two Pointers", "total": 16, "solved": 3, "per": 1 }
+  ],
+  "selectedTopicData": []
+}
