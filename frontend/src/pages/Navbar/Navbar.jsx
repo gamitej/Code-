@@ -6,6 +6,7 @@ import { ProfileMenu } from "../../components";
 import LoginModal from "../../pages/Login/LoginModal";
 // store
 import { useLogin } from "../../store/login/useLogin";
+import { NavLink } from "react-router-dom";
 
 export default function ButtonAppBar() {
   // =========== STATES===============
@@ -41,7 +42,9 @@ export default function ButtonAppBar() {
       <div className="w-full flex justify-between items-center h-[5rem] shadow-md">
         {/* Title */}
         <div>
-          <img src={logo} alt="logo" className="w-[9rem] h-[5rem]" />
+          <NavLink to="/" className="cursor-pointer">
+            <img src={logo} alt="logo" className="w-[9rem] h-[5rem]" />
+          </NavLink>
         </div>
 
         {/* Buttons */}
