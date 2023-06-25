@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {
   BackButton,
   BasicModal,
+  BasicTable,
   Dropdown,
   InputTextField,
 } from "../../components";
@@ -81,6 +82,9 @@ const Profile = () => {
             handleSubmit={handleSubmit}
           />
         </div>
+      </div>
+      <div className="w-[90%] m-auto">
+        <BasicTable />
       </div>
     </div>
   );

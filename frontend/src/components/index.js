@@ -11,10 +11,13 @@ import Password from "./Input/Password";
 import FullScreenLoader from "./Loading/FullScreenLoader";
 // modal
 import BasicModal from "./Modal/BasicModal";
+// table
+import BasicTable from "./Table/BasicTable";
 
 export {
   Dropdown,
   Password,
+  BasicTable,
   BasicModal,
   BackButton,
   ProfileMenu,
