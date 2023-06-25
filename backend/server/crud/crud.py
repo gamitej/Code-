@@ -1,6 +1,10 @@
 from flask import Flask, request, jsonify
 from flask import Blueprint
+from threading import Thread
+# function import
 from remark.rem import addQuestionToTable, delRemark, updateRemark
+from crud.create_excel import createExcel
+
 
 crud = Blueprint('crud', __name__)
 
@@ -12,10 +16,16 @@ def addQuestions():
         # -- req body
         url, level, question, topic, platform = req["url"], req[
             "level"], req["question"], req["topic"], req["platform"]
+        # -- inserting to table
         res = addQuestionToTable(
             topic, question, url, level, platform)
         if res:
+            # -- return response
             return jsonify({"message": res, "error": False}), 400
+        # -- update to excel
+        thread = Thread(target=createExcel)
+        thread.start()
+        # -- return response
         return jsonify({"message": "Question Added Successfully", "error": True}), 200
     except Exception as e:
         print(e)

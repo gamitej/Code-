@@ -32,7 +32,6 @@ const InputTextField = ({
         spellCheck={false}
         autoComplete="off"
         inputProps={{ minLength, maxLength }}
-        errorText="hi"
       />
     </>
   );
