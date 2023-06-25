@@ -19,6 +19,7 @@ def checkUserValidity(user, passwd):
         f"SELECT * FROM {table_name} WHERE username = '{user}' AND password = '{passwd}'")
     result = cursor.fetchone()
     connection.close()
+    print(result)
     if result is None:
         return False
     else:

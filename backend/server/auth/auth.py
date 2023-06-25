@@ -12,6 +12,7 @@ def login():
         userId, passwd = req["username"], req["password"]
         # === check if user & passwd match
         res = checkUserValidity(userId, passwd)
+        print(type(passwd))
         if res == False:
             return jsonify({"msg": "Username/Password is incorrect"}), 400
         return jsonify({"msg": "success"}), 200
@@ -30,7 +31,7 @@ def singup():
         if res:
             return jsonify({"msg": "Username already exists"}), 400
         else:
-            res = insertUser(username, passwd)
+            res = insertUser(username, str(passwd))
             return jsonify({"msg": "success"}), 200
     except Exception as e:
         print(e)
