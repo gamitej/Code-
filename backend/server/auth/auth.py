@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask import Blueprint
 from auth.auth_db import getUsers, insertUser, checkUserValidity
+from db import selectQuery
 
 auth = Blueprint('auth', __name__)
 
@@ -12,10 +13,15 @@ def login():
         userId, passwd = req["username"], req["password"]
         # === check if user & passwd match
         res = checkUserValidity(userId, passwd)
-        print(type(passwd))
         if res == False:
             return jsonify({"msg": "Username/Password is incorrect"}), 400
-        return jsonify({"msg": "success"}), 200
+        else:
+            query = f"select id from users where username =  '{userId}'"
+            res = selectQuery(query, True)
+            if res is not None:
+                return jsonify({"msg": "success", "id": res[0]}), 200
+            else:
+                return jsonify({"msg": "Something went wrong"}), 400
     except Exception as e:
         print(e)
         return jsonify({"msg": "Something went wrong"}), 500

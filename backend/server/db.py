@@ -6,6 +6,18 @@ def connect_to_db():
     return connection
 
 
+def selectQuery(query, fetchOne=True):
+    connection = connect_to_db()
+    cursor = connection.cursor()
+    cursor.execute(query)
+    if fetchOne:
+        res = cursor.fetchone()
+    else:
+        res = cursor.fetchall()
+    connection.close()
+    return res
+
+
 def selectFromTable(col, table_name):
     connection = connect_to_db()
     cursor = connection.cursor()

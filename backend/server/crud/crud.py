@@ -8,6 +8,12 @@ from crud.create_excel import createExcel
 
 crud = Blueprint('crud', __name__)
 
+arr = [
+    {"title": "Arrays", "total": 32, "solved": 32, "per": 1},
+    {"title": "Strings", "total": 22, "solved": 21, "per": 1},
+    {"title": "Two Pointers", "total": 16, "solved": 3, "per": 1},
+]
+
 
 @crud.route('/add-questions', methods=["POST"])
 def addQuestions():
@@ -27,6 +33,28 @@ def addQuestions():
         thread.start()
         # -- return response
         return jsonify({"message": "Question Added Successfully", "error": True}), 200
+    except Exception as e:
+        print(e)
+        return jsonify({"data": 'Error Occured'}), 500
+
+
+@crud.route('/topics', methods=["GET"])
+def getTopic():
+    # -- /topic?id=<string:id>
+    try:
+        id = request.args.get('id')
+        # -- return response
+        return jsonify({"data": arr, "error": True}), 200
+    except Exception as e:
+        print(e)
+        return jsonify({"data": 'Error Occured'}), 500
+
+
+@crud.route('/topics/<string:id>', methods=["GET"])
+def getTopics(id):
+    try:
+        # -- return response
+        return jsonify({"data": arr, "error": True}), 200
     except Exception as e:
         print(e)
         return jsonify({"data": 'Error Occured'}), 500
