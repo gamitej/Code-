@@ -1,9 +1,12 @@
 import { create } from "zustand";
-import { getUser, removeUser, setUser } from "./events";
+// api call
 import { postLogin, postSignup } from "../../services";
+// session storage
+import { getUser, getUserId, removeUser, setUser, setUserId } from "./events";
 
 export const useLogin = create((set) => ({
   user: "",
+  userId: getUserId() || "",
   loading: false,
   isLoggined: getUser() || false,
 
@@ -18,11 +21,13 @@ export const useLogin = create((set) => ({
     const data = await postLogin(req);
     if (data.msg === "success") {
       setUser(req.username);
+      setUserId(data.id);
       set((state) => ({
         ...state,
         isLoggined: true,
         loading: false,
         user: req.username,
+        userId: data.id,
       }));
       return true;
     } else {

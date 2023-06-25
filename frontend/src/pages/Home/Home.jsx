@@ -8,10 +8,11 @@ import { getAllTopics } from "../../services/ApiServices/Home/homeService";
 // images
 import logo from "../../assests/bg.jpg";
 import FullScreenLoader from "../../components/Loading/FullScreenLoader";
+import { useLogin } from "../../store/login/useLogin";
 
 const Home = () => {
+  const { userId } = useLogin();
   // ========= USE-STATES =============
-
   const [topics, setTopics] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -26,7 +27,7 @@ const Home = () => {
     const callHomeApi = async () => {
       try {
         setLoading(true);
-        const { data } = await getAllTopics();
+        const { data } = await getAllTopics(userId);
         setTopics(data);
       } catch (error) {
         console.log(error);

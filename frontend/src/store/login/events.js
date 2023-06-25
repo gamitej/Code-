@@ -1,4 +1,8 @@
+// ============== CONSTANTS =================
+
 const userlabel = "user";
+const userId = "userId";
+// ============== USER-NAME =================
 
 export const getUser = () => {
   const user = window.sessionStorage.getItem(userlabel);
@@ -14,4 +18,22 @@ export const setUser = (name) => {
 
 export const removeUser = () => {
   window.sessionStorage.removeItem(userlabel);
+};
+
+// ============== USER-ID ==================
+
+export const getUserId = () => {
+  const id = window.sessionStorage.getItem(userId);
+  if (id) {
+    return id;
+  }
+  return "";
+};
+
+export const setUserId = (id) => {
+  window.sessionStorage.setItem(userId, id);
+};
+
+export const removeUserId = () => {
+  window.sessionStorage.removeItem(userId);
 };

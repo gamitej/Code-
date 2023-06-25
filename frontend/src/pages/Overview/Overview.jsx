@@ -12,9 +12,12 @@ import { Divider } from "@mui/material";
 import OverviewCardHeader from "./comp/OverviewCardHeader";
 // utils
 import colorCode from "../../utils/colorCode.json";
+import { useLogin } from "../../store/login/useLogin";
 
 const Overview = () => {
   const { name } = useParams();
+  const { userId } = useLogin();
+
   // ============= USE-STATE =========================
   const [filters, setFilters] = useState(stateObj || {});
   const [loading, setLoading] = useState(false);
@@ -28,7 +31,7 @@ const Overview = () => {
     const callApi = async () => {
       try {
         setLoading(true);
-        const { data } = await getSelectedTopicData();
+        const { data } = await getSelectedTopicData(userId, name);
         setCardData(data);
       } catch (error) {
         console.log(error);
