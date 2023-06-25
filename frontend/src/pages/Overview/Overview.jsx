@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+// api
+import { getSelectedTopicData } from "../../services";
 // data
-import { cardDataObj, stateObj } from "./comp/data";
+import { stateObj } from "./comp/data";
 // comp
-import { BackButton } from "../../components";
+import { BackButton, FullScreenLoader } from "../../components";
 import OverviewCardBody from "./comp/OverviewCardBody";
 // mui
 import { Divider } from "@mui/material";
@@ -15,10 +17,31 @@ const Overview = () => {
   const { name } = useParams();
   // ============= USE-STATE =========================
   const [filters, setFilters] = useState(stateObj || {});
-
-  const [cardData, setCardData] = useState(cardDataObj || {});
+  const [loading, setLoading] = useState(false);
+  const [cardData, setCardData] = useState([]);
 
   // ============= EVENT-HANDLERS ====================
+
+  // ========= CALL ALL PINS API =============
+
+  useEffect(() => {
+    const callApi = async () => {
+      try {
+        setLoading(true);
+        const { data } = await getSelectedTopicData();
+        setCardData(data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    };
+    callApi();
+  }, []);
+
+  if (loading) {
+    return <FullScreenLoader open={loading} title="loading questions..." />;
+  }
 
   return (
     <div className="bg-slate-100 h-[calc(100vh-5rem)]">

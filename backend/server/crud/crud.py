@@ -17,7 +17,9 @@ json_file_path = os.path.join(crud.root_path, 'dummy.json')
 with open(json_file_path) as file:
     data = json.load(file)
 topicsData, selectedTopicData = data.get(
-    'topicsData'), data.get('selectedTopic')
+    'topicsData'), data.get('selectedTopicData')
+
+print(selectedTopicData)
 
 
 @crud.route('/add-questions', methods=["POST"])
@@ -61,7 +63,7 @@ def getSelectedTopicData():
     try:
         id, topic = request.args.get('id'), request.args.get('topic')
         # -- return response
-        return jsonify({"data": arr, "error": True}), 200
+        return jsonify({"data": selectedTopicData, "error": True}), 200
     except Exception as e:
         print(e)
         return jsonify({"data": 'Error Occured'}), 500
