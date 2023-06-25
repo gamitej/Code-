@@ -19,6 +19,8 @@ function Password({
   value = "",
   name = "password",
   placeholder = "Enter your password",
+  minLength = 4,
+  maxLength = 8,
 }) {
   // =========== USE_STATE HOOK ===============
   const [showPassword, setShowPassword] = React.useState(false);
@@ -40,6 +42,7 @@ function Password({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        inputProps={{ minLength, maxLength }}
         type={showPassword ? "text" : "password"}
         endAdornment={
           <InputAdornment position="end">
@@ -53,12 +56,15 @@ function Password({
             </IconButton>
           </InputAdornment>
         }
+        required
       />
     </FormControl>
   );
 }
 
 Password.propTypes = {
+  maxLength: PropTypes.number,
+  minLength: PropTypes.number,
   name: PropTypes.string,
   onChange: PropTypes.func,
   placeholder: PropTypes.string,

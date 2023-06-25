@@ -11,10 +11,14 @@ const InputTextField = ({
   onChange = () => {},
   placeholder = "",
   required = true,
+  type = "text,",
+  minLength = 4,
+  maxLength = 50,
 }) => {
   return (
     <>
       <TextField
+        type={type}
         size={size}
         value={value}
         id={name}
@@ -27,6 +31,8 @@ const InputTextField = ({
         required={required}
         spellCheck={false}
         autoComplete="off"
+        inputProps={{ minLength, maxLength }}
+        errorText="hi"
       />
     </>
   );

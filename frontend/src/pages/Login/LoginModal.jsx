@@ -74,6 +74,7 @@ const LoginModal = ({ open, setOpen, handleOpen, buttonLabel = "login" }) => {
             placeholder="Enter username"
             onChange={handleChange}
             value={form.username}
+            maxLength={8}
           />
           <Password value={form.password} onChange={handleChange} />
           <button
