@@ -11,7 +11,7 @@ import {
 // mui
 import { Button } from "@mui/material";
 // data
-import { dropDownData, inputData } from "./data";
+import { inputData } from "./data";
 // services
 import { getProfileDropdowns, postQuestion } from "../../services";
 
