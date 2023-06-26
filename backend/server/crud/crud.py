@@ -19,8 +19,6 @@ with open(json_file_path) as file:
 topicsData, selectedTopicData = data.get(
     'topicsData'), data.get('selectedTopicData')
 
-print(selectedTopicData)
-
 
 @crud.route('/add-questions', methods=["POST"])
 def addQuestions():

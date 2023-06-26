@@ -84,7 +84,12 @@ const Profile = () => {
         </div>
       </div>
       <div className="w-[90%] m-auto">
-        <BasicTable />
+        <BasicTable
+          height={"30rem"}
+          title="questions"
+          enableDowloadCsv
+          isLoading={false}
+        />
       </div>
     </div>
   );
