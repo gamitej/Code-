@@ -6,13 +6,13 @@ import os
 import json
 from threading import Thread
 # function import
-from remark.rem import addQuestionToTable, delRemark, updateRemark
-from crud.create_excel import createExcel
+from explore.explore_db import addQuestionToTable, delRemark, updateRemark
+from explore.create_excel import createExcel
 
-crud = Blueprint('crud', __name__)
+explore = Blueprint('explore', __name__)
 
 # reading json
-json_file_path = os.path.join(crud.root_path, 'dummy.json')
+json_file_path = os.path.join(explore.root_path, 'dummy.json')
 
 with open(json_file_path) as file:
     data = json.load(file)
@@ -20,7 +20,7 @@ topicsData, selectedTopicData = data.get(
     'topicsData'), data.get('selectedTopicData')
 
 
-@crud.route('/add-questions', methods=["POST"])
+@explore.route('/add-questions', methods=["POST"])
 def addQuestions():
     try:
         req = request.get_json()
@@ -43,7 +43,7 @@ def addQuestions():
         return jsonify({"data": 'Error Occured'}), 500
 
 
-@crud.route('/topics', methods=["GET"])
+@explore.route('/topics', methods=["GET"])
 def getTopic():
     # -- /topic?id=<string:id>
     try:
@@ -55,7 +55,7 @@ def getTopic():
         return jsonify({"data": 'Error Occured'}), 500
 
 
-@crud.route('/selected_topic', methods=["GET"])
+@explore.route('/selected_topic', methods=["GET"])
 def getSelectedTopicData():
     # -- /selected_topic/topic?id=<string:id>&topic=<string:topic>
     try:
@@ -67,7 +67,7 @@ def getSelectedTopicData():
         return jsonify({"data": 'Error Occured'}), 500
 
 
-@crud.route('/remarks/<string:id>', methods=["DELETE", "PUT"])
+@explore.route('/remarks/<string:id>', methods=["DELETE", "PUT"])
 def putDeleteRemark(id):
     try:
         if request.method == "DELETE":
