@@ -11,6 +11,7 @@ from explore.create_excel import createExcel
 
 explore = Blueprint('explore', __name__)
 
+
 # reading json
 json_file_path = os.path.join(explore.root_path, 'dummy.json')
 

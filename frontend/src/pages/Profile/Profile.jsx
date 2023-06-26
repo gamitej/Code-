@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 // comp
 import {
   BackButton,
@@ -11,12 +12,14 @@ import {
 import { Button } from "@mui/material";
 // data
 import { dropDownData, inputData } from "./data";
-import { postQuestion } from "../../services";
-import { toast } from "react-toastify";
+// services
+import { getProfileDropdowns, postQuestion } from "../../services";
 
 const Profile = () => {
   // =================== USE-STATE =====================
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [dropDownData, setDropDownData] = useState([]);
   const [form, setForm] = useState({
     url: "",
     level: "",
@@ -62,6 +65,23 @@ const Profile = () => {
     }
   };
 
+  // ========= CALL ALL PINS API =============
+  const callGetProfileDropdownApi = async () => {
+    try {
+      setLoading(true);
+      const { data } = await getProfileDropdowns();
+      setDropDownData(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    callGetProfileDropdownApi();
+  }, []);
+
   return (
     <div className="w-full h-full m-auto">
       <div className="relative h-[5rem] flex justify-center items-center">
@@ -80,6 +100,7 @@ const Profile = () => {
             handleOpen={handleOpen}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            dropDownData={dropDownData}
           />
         </div>
       </div>
@@ -102,6 +123,7 @@ function AdminModal({
   handleOpen,
   handleChange,
   handleSubmit,
+  dropDownData = [],
 }) {
   return (
     <BasicModal

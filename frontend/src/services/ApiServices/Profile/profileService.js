@@ -12,3 +12,13 @@ export async function postQuestion(req) {
     console.log(error, error.message);
   }
 }
+
+export async function getProfileDropdowns() {
+  try {
+    const { data } = await http.get(`${endpoint}/profile/dropdown-data`);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error, error.message);
+  }
+}
