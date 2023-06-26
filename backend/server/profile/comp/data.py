@@ -25,24 +25,24 @@ topicOptionsList = getOptions(platformList, "platform")
 
 dropDownData = [
     {
-        "options": platformOptionsList,
         "id": "1",
+        "options": platformOptionsList,
         "label": "Platform",
         "name": "platform",
     },
     {
+        "id": "2",
         "options": [
             {"id": 1, "label": "Easy", "value": "easy"},
             {"id": 2, "label": "Medium", "value": "medium"},
             {"id": 3, "label": "Hard", "value": "hard"},
         ],
-        "id": "2",
         "label": "Level",
         "name": "level",
     },
     {
-        "options": topicOptionsList,
         "id": "3",
+        "options": topicOptionsList,
         "label": "Topic",
         "name": "topic",
     },
