@@ -8,33 +8,34 @@ import { ExportToCsv } from "export-to-csv"; //or use your library of choice her
 //defining columns outside of the component is fine, is stable
 const columns = [
   {
-    accessorKey: "id",
-    header: "ID",
+    accessorKey: "sno",
+    header: "S.no",
     size: 40,
   },
   {
-    accessorKey: "firstName",
-    header: "First Name",
-    size: 120,
+    accessorKey: "level",
+    header: "Level",
+    size: 40,
   },
   {
-    accessorKey: "lastName",
-    header: "Last Name",
-    size: 120,
-  },
-  {
-    accessorKey: "company",
-    header: "Company",
-    size: 300,
-  },
-  {
-    accessorKey: "city",
-    header: "City",
-  },
-  {
-    accessorKey: "country",
-    header: "Country",
+    accessorKey: "question",
+    header: "Question",
     size: 220,
+  },
+  {
+    accessorKey: "url",
+    header: "Question Link",
+    size: 220,
+  },
+  {
+    accessorKey: "status",
+    header: "Status",
+    size: 40,
+  },
+  {
+    accessorKey: "platform",
+    header: "Platform",
+    size: 40,
   },
 ];
 
