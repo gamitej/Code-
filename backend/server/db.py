@@ -6,6 +6,14 @@ def connect_to_db():
     return connection
 
 
+def execute_query(query):
+    connection = connect_to_db()
+    cursor = connection.cursor()
+    cursor.execute(query)
+    connection.commit()
+    connection.close()
+
+
 def selectQuery(query, fetchOne=True):
     connection = connect_to_db()
     cursor = connection.cursor()
