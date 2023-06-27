@@ -7,10 +7,9 @@ cursor = connection.cursor()
 
 create_user_table = '''
         CREATE TABLE IF NOT EXISTS users (
-            id text,
+            user_id text PRIMARY KEY,
             username text,
-            password VARCHAR(25) NOT NULL,
-            PRIMARY KEY (id)
+            password VARCHAR(25) NOT NULL
         )
         '''
 cursor.execute(create_user_table)
@@ -19,16 +18,29 @@ cursor.execute(create_user_table)
 
 create_que_table = '''
         CREATE TABLE IF NOT EXISTS questions (
-            topicId text,
+            topic_id text PRIMARY KEY,
             topic VARCHAR(25) NOT NULL,
             question text,
             url VARCHAR(25) NOT NULL,
             level VARCHAR(25) NOT NULL,
-            platform VARCHAR(25) NOT NULL,
-            PRIMARY KEY (topicId)
+            platform VARCHAR(25) NOT NULL
         )
         '''
 cursor.execute(create_que_table)
+
+# =========== CREATE USER-QUESTIONS TABLE ===============
+
+sqlQuery = '''
+        CREATE TABLE IF NOT EXISTS user_questions (
+            mark_date TEXT DEFAULT (strftime('%Y-%m-%d %H:%M:%S', 'now', 'localtime')) PRIMARY KEY,
+            user_id text,
+            question_id text,
+            FOREIGN KEY (user_id) REFERENCES users (user_id),
+            FOREIGN KEY (question_id) REFERENCES quentions (question_id)
+        )
+        '''
+
+cursor.execute(sqlQuery)
 
 # =========== INSERT MANY ROWS ================
 

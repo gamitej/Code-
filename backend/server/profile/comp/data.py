@@ -20,7 +20,7 @@ topicList = ["arrays", "twoPointers", "strings"]
 
 
 platformOptionsList = getOptions(platformList, "platform")
-topicOptionsList = getOptions(platformList, "platform")
+topicOptionsList = getOptions(topicList, "topics")
 
 
 dropDownData = [

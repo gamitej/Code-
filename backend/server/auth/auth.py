@@ -16,7 +16,8 @@ def login():
         if res == False:
             return jsonify({"msg": "Username/Password is incorrect"}), 400
         else:
-            query = f"select id from users where username =  '{userId}'"
+            # === return user_id
+            query = f"select user_id from users where username =  '{userId}'"
             res = selectQuery(query, True)
             if res is not None:
                 return jsonify({"msg": "success", "id": res[0]}), 200
